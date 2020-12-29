@@ -1,7 +1,7 @@
 import pyttsx3
-from selenium import webdriver 
-import os
-import random2
+import scraper
+import tasks
+import speech_recognition as sr
 
 engine = pyttsx3.init()
 voices = engine.getProperty('voices')
@@ -12,19 +12,24 @@ def speak(audio):
     engine.runAndWait()
 
 def assisstant(command):
-    if command == command:
-        if command == str("random number"):
-            print(2)
-        if command == str("Open YT"):
-            browser = webdriver.Chrome()
-            browser.get('https://www.youtube.com/')
-        else:
-            print("Error: Unknown command")
-            retry_input = input("Do you want to retry(y/n): ")
-            if retry_input == ("y"):
-                assisstant(command_input)
-            if retry_input == ("n"):
-                exit
+    if command == str("Open YT"):
+           scraper.youtube()
+           speak("Opening Youtube")
+    if command == str("Open Music app"):
+            scraper.YT_music()
+            speak("Opening YT Music")
+    if command == str("Open Github"):
+            scraper.Github()
+            speak("Opening Github")
+    if command == str("Enter a task = str"):
+            task_input = input(str("Enter a new task: "))
+            tasks.text(task_input)
+            speak("Changes saved")
+    if command == str("Enter a task = int"):
+            task_input = input("Enter a new task: ")
+            task_input_float = int(float(task_input))
+            tasks.text(task_input_float)
+            speak("Changes saved")
 
 command_input = input("Enter command: ")
 assisstant(command_input)
