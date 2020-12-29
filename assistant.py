@@ -12,14 +12,19 @@ def speak(audio):
     engine.runAndWait()
 
 def assisstant(command):
-    # speak a random number
-    if command == str("random number"):
-        print(2)
-    if value_for_number == value_for_number:
-        print(value_for_number)
-        speak(value_for_number)
+    if command == command:
+        if command == str("random number"):
+            print(2)
+        if command == str("Open YT"):
+            browser = webdriver.Chrome()
+            browser.get('https://www.youtube.com/')
+        else:
+            print("Error: Unknown command")
+            retry_input = input("Do you want to retry(y/n): ")
+            if retry_input == ("y"):
+                assisstant(command_input)
+            if retry_input == ("n"):
+                exit
 
 command_input = input("Enter command: ")
-if command_input == str("Write a number"):
-    value_for_number = input("Enter number: ")
 assisstant(command_input)
