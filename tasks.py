@@ -1,5 +1,6 @@
 import json
 import time
+import numpy as np
 
 tasks = [2, 3]
 
