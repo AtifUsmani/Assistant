@@ -2,7 +2,7 @@ import json
 import time
 import numpy as np
 
-tasks = [2, 3]
+tasks = ([2, 3])
 
 
 def text(x):

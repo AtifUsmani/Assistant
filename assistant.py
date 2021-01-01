@@ -2,10 +2,14 @@ import pyttsx3
 import scraper
 import tasks
 import speech_recognition as sr
+import encrypter
+from cryptography.fernet import Fernet
 
 engine = pyttsx3.init()
 voices = engine.getProperty('voices')
 engine.setProperty('voice', voices[1].id)
+key = Fernet.generate_key()
+f = Fernet(key)
 
 def speak(audio):
     engine.say(audio)
@@ -30,6 +34,13 @@ def assisstant(command):
             task_input_float = int(float(task_input))
             tasks.text(task_input_float)
             speak("Changes saved")
+    if command == str("Encrypt"):
+            encrypter_input = input(str("Enter a string to encrypt: "))
+            encrypter.encrypt(bytes(encrypter_input, encoding='utf-8'))
+            # encrypter_input = message
+    if command == str("Decrypt") or str("dt"):
+            decrypter_input = input(str("Enter to decrypt: "))
+            encrypter.decrypt(bytes(decrypter_input, encoding='utf-8'))
 
 command_input = input("Enter command: ")
 assisstant(command_input)
