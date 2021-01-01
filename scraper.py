@@ -1,8 +1,8 @@
 from selenium import webdriver
-
+from webdriver_manager.chrome import ChromeDriverManager
 
 def youtube():
-    browser = webdriver.Chrome()
+    browser = webdriver.Chrome(ChromeDriverManager().install())
     browser.get('https://www.youtube.com/')
 
 
